@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: "localLLM"
+  ai:
+    ollama:
+      init:
+        pull-model-strategy: when_missing  # Assume exists, but if missing pull tinyllama (just 700MB)
+        timeout: 60s
+        max-retries: 1
+      chat:
+        options:
+#           I don't want mistral, which is the default model! TOO BIG FOR A TEMPLATE
+          model: "https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v0.6"
+          temperature: 0.7
